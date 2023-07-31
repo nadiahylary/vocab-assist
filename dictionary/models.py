@@ -3,3 +3,9 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 # Create your models here.
+
+
+class Word(models.Model):
+    name = models.CharField(),
+    meaning = models.CharField(),
+
