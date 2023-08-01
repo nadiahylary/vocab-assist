@@ -2,12 +2,20 @@ from django.shortcuts import render
 from django.views import View
 from django.views.generic import ListView, DetailView
 
-app_name = 'dictionary'
+from dictionary.models import Word
+
+
 # Create your views here.
 
 
 class IndexView(View):
-    pass
+
+    def get(self, request):
+        words = Word.objects.all()
+        context = {
+            "words": words,
+        }
+        return render(request, "dictionary/index.html", context)
 
 
 class DetailWordView(DetailView):

@@ -6,6 +6,7 @@ from django.db import models
 
 
 class Word(models.Model):
-    name = models.CharField(),
-    meaning = models.CharField(),
+    name = models.CharField(max_length=150, unique=True),
+    meaning = models.CharField(max_length=250),
+
 
