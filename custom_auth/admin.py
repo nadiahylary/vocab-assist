@@ -4,5 +4,5 @@ from django.contrib.auth.admin import UserAdmin
 from custom_auth.models import CustomUser
 
 # Register your models here.
-# admin.site.register(CustomUser)
+admin.site.register(CustomUser)
 

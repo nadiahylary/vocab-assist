@@ -110,7 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTH_USER_MODEL = "custom_auth.CustomUser"  # Overriding the default user model
-AUTHENTICATION_BACKENDS = ['custom_auth.backends.EmailBackend']  # overriding the default authentication backend
+# AUTHENTICATION_BACKENDS = ['custom_auth.backends.EmailBackend']  # overriding the default authentication backend
 
 
 # Internationalization

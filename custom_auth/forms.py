@@ -8,7 +8,7 @@ from custom_auth.models import CustomUser
 class RegisterForm(UserCreationForm):
     class Meta:
         model = CustomUser
-        fields = ('email', 'username', 'password1', 'password2')
+        fields = ('email', 'password1', 'password2')
 
 
 class LoginForm(AuthenticationForm):
