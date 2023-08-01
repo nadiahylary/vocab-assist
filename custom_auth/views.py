@@ -1,6 +1,7 @@
 from django.contrib import auth, messages
 from django.contrib.auth import views, authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.hashers import make_password
 from django.shortcuts import render, redirect
 from django.views.generic import CreateView
 from django.urls import reverse_lazy
@@ -17,14 +18,14 @@ def login_user(request):
         # password = request.POST['password']
         email = request.user.email
         password = request.user.password
-        user = authenticate(request, email=email, password=password)
+        user = authenticate(request, email=email, password=make_password(password))
         if user is not None:
             login(request, user)
             messages.success(request, "You Successfully Logged in!")
-            return redirect('dictionary:index', user)
+            return redirect('dict/', user)
         else:
             messages.error(request, "There was an error. Please try again...or signup!")
-            return redirect('dictionary:index')
+            return redirect('dict/', user)
     else:
         return render(request, 'custom_auth/login.html', {'form': AuthenticationForm})
 
@@ -36,10 +37,10 @@ def signup(request):
             # Auto authenticate the user:
             email = form.cleaned_data['email']
             password = form.cleaned_data['password1']
-            user = authenticate(email=email, password=password)
+            user = authenticate(email=email, password=make_password(password))
             login(request, user)
             messages.success(request, "Your account was Successfully Created! Cheers!")
-            return redirect('dictionary:index')
+            return redirect('dict/', user)
     else:
         form = RegisterForm()
         return render(request, 'custom_auth/signup.html', {'form': form})

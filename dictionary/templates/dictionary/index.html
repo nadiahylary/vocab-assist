@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +8,10 @@
     <title>{% block title %}
 
     {% endblock %}</title>
+
+    {% block css %}
+
+    {% endblock %}
 </head>
 <body>
     {% block content %}

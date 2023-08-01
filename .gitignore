@@ -92,7 +92,9 @@ fabric.properties
 *_LOCAL_*.txt
 *_REMOTE_*.txt
 
-dictionary_django/settings.py### Django template
+dictionary_django/settings.py
+
+### Django template
 *.log
 *.pot
 *.pyc
