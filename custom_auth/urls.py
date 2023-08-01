@@ -6,5 +6,7 @@ from custom_auth import views
 app_name = 'custom_auth'
 urlpatterns = [
     path('', views.LoginView.as_view(), name='login'),
-    path('signup/', views.SignupView.as_view(), name='signup')
+    path('signup/', views.SignupView.as_view(), name='signup'),
+    path('index/', views.index, name='index'),
+    # path('logout/', views.logout_user, name='logout')
 ]
