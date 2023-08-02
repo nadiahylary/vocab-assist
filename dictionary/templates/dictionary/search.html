@@ -20,7 +20,18 @@
         {% endblock %}</header>
 
         <main>{% block main %}
-
+            <form action="{% url 'dictionary:search' %}">
+                <div class="input-group">
+                    <input type="text" required class="form-control" name="search" placeholder="Search your favorite word.......">
+                    <div class="input-group-append">
+                        <button class="btn btn-success" type="submit">
+                            Search
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <h3>{{ word.name }}</h3>
+            <p>{{ word.meaning }}</p>
         {% endblock %}</main>
         <footer>
             {% block footer %}

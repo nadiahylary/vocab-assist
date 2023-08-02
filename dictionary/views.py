@@ -2,9 +2,11 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.views import View
 from django.views.generic import ListView, DetailView
+from random_word import RandomWords
+from PyDictionary import PyDictionary
 
-from dictionary.models import Word
-
+r_word = RandomWords().get_random_word()
+my_dict = PyDictionary()
 
 # Create your views here.
 
@@ -12,9 +14,16 @@ from dictionary.models import Word
 class IndexView(View):
 
     def get(self, request):
-        words = Word.objects.all()
+        word = r_word
+        meanings = my_dict.meaning(word)
+        synonyms = my_dict.getSynonyms(word)
+        antonyms = my_dict.getAntonyms(word)
+
         context = {
-            "words": words,
+            'word': word,
+            'meanings': meanings,
+            'synonyms': synonyms,
+            'antonyms': antonyms
         }
         return render(request, "dictionary/index.html", context)
 
