@@ -2,3 +2,5 @@ Django~=4.2.3
 psycopg2
 PyDictionary
 random_word
+django-allauth
+
