@@ -32,13 +32,18 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'dictionary',
-    'custom_auth',
+    # 'custom_auth',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    
 
 ]
 
@@ -111,7 +116,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 AUTH_USER_MODEL = "custom_auth.CustomUser"  # Overriding the default user model
 # AUTHENTICATION_BACKENDS = ['custom_auth.backends.EmailBackend']  # overriding the default authentication backend
-
+AUTHENTICATION_BACKENDS = [ 'django.contrib.auth.backends.ModelBackend',
+                           'allauth.account.auth_backends.AuthenticationBackend']
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
