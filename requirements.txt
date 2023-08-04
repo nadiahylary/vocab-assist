@@ -3,4 +3,4 @@ psycopg2
 PyDictionary
 random_word
 django-allauth
-
+# use beautifulsoup to extract a google's search results to get examples uses of a word.

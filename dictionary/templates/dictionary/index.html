@@ -16,14 +16,16 @@
 <body>
     {% block content %}
 
-        <h3>{{ email }}</h3>
-        {% for word in words %}
+        <h3>{{ user.email }}</h3>
+
             <div>
-                <h2>word.name</h2>
-                <p>word.meaning</p>
+                <h2>{{ word }}</h2>
+                <p>{{ meanings }}</p>
+                <p>{{ synonyms }}</p>
+                <p>{{ antonyms }}</p>
             </div>
 
-        {% endfor %}
+
     {% endblock %}
 </body>
 </html>

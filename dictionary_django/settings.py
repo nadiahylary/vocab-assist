@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'django.contrib.sites',
     'dictionary',
     # 'custom_auth',
     'django.contrib.admin',
@@ -41,7 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -115,12 +115,11 @@ AUTH_PASSWORD_VALIDATORS = [
 # Ensure SITE_ID is set sites app
 SITE_ID = 1
 
-AUTH_USER_MODEL = "custom_auth.CustomUser"  # Overriding the default user model
+# AUTH_USER_MODEL = "custom_auth.CustomUser"  # Overriding the default user model
 # AUTHENTICATION_BACKENDS = ['custom_auth.backends.EmailBackend']  # overriding the default authentication backend
 # Add the 'allauth' backend to AUTHENTICATION_BACKEND and keep default ModelBackend
 AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend',
                            'allauth.account.auth_backends.AuthenticationBackend']
-
 
 # Custom allauth settings
 # Use email as the primary identifier
@@ -130,8 +129,14 @@ ACCOUNT_EMAIL_REQUIRED = True
 # Make email verification mandatory to avoid junk email accounts
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 
+# EMAIL_BACKEND so allauth can proceed to send confirmation emails
+# ONLY for development/testing use console
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 # Eliminate need to provide username, as it's a very old practice
 ACCOUNT_USERNAME_REQUIRED = False
+
+LOGIN_REDIRECT_URL = '/dictionary/'
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
@@ -156,10 +161,6 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-# EMAIL_BACKEND so allauth can proceed to send confirmation emails
-# ONLY for development/testing use console
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # For production
 

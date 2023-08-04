@@ -10,11 +10,11 @@ my_dict = PyDictionary()
 
 # Create your views here.
 
-# @login_required(login_url='custom_auth:login')
+
 class IndexView(View):
 
     def get(self, request):
-        word = r_word
+        word = "prolific"
         meanings = my_dict.meaning(word)
         synonyms = my_dict.getSynonyms(word)
         antonyms = my_dict.getAntonyms(word)
